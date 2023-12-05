@@ -1,11 +1,19 @@
 //import node module and setting related variables
 const express = require('express')
 const app = express()
+const exphbs = require('express-handlebars')
 
 const db = require('./models')
 const Restaurant = db.Restaurant
 
 const port = 3000
+
+//設定template engine
+app.engine('.hbs', exphbs({ defaultLayout: 'main', extname:'.hbs' }))
+app.set('view engine', '.hbs')
+
+//設定靜態檔案
+app.use(express.static('public'))
 
 //setting route
 app.get('/',(req,res)=>{
@@ -14,8 +22,11 @@ app.get('/',(req,res)=>{
 
 //瀏覽所有餐廳
 app.get('/restaurants',(req,res)=>{
-  return Restaurant.findAll()
-  .then((restaurants)=>res.send({restaurants}))
+  return Restaurant.findAll({
+    attributes:['id','name','name_en','category','image','location','phone','google_map','rating','description'],
+    raw:true
+  })
+  .then((restaurants)=>res.render('index',{ restaurants }))
   .catch((err)=>res.status(422).json(err))
 })
 
