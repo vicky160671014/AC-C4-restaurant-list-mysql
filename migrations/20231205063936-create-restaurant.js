@@ -10,22 +10,23 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(50),
+        allowNull:false
       },
       name_en: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(50)
       },
       category: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(20)
       },
       image: {
         type: Sequelize.STRING
       },
       location: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(50)
       },
       phone: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(20)
       },
       google_map: {
         type: Sequelize.STRING
