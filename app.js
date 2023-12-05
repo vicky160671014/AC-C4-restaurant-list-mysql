@@ -2,6 +2,9 @@
 const express = require('express')
 const app = express()
 
+const db = require('./models')
+const Restaurant = db.Restaurant
+
 const port = 3000
 
 //setting route
@@ -11,7 +14,9 @@ app.get('/',(req,res)=>{
 
 //瀏覽所有餐廳
 app.get('/restaurants',(req,res)=>{
-  res.send('render restaurants')
+  return Restaurant.findAll()
+  .then((restaurants)=>res.send({restaurants}))
+  .catch((err)=>res.status(422).json(err))
 })
 
 //新增餐廳頁面
