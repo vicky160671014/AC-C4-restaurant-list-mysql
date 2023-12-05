@@ -55,7 +55,13 @@ app.post('/restaurants', (req, res) => {
 
 //瀏覽特定餐廳
 app.get('/restaurants/:id', (req, res) => {
-  res.send(`render restaurant: ${req.params.id}`)
+  const id = req.params.id
+  return Restaurant.findByPk(id, {
+    attributes: ['id', 'name', 'name_en', 'category', 'image', 'location', 'phone', 'google_map', 'rating', 'description'],
+    raw: true
+})
+    .then((restaurant)=>res.render('show',{ restaurant }))
+    .catch((err) => res.status(422).json(err))
 })
 
 //編輯特定餐廳頁面
