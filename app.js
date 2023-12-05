@@ -12,8 +12,8 @@ const port = 3000
 app.engine('.hbs', exphbs({ defaultLayout: 'main', extname:'.hbs' }))
 app.set('view engine', '.hbs')
 
-//設定靜態檔案
-app.use(express.static('public'))
+app.use(express.static('public'))//設定靜態檔案
+app.use(express.urlencoded({ extended: true }))
 
 //setting route
 app.get('/',(req,res)=>{
@@ -32,12 +32,25 @@ app.get('/restaurants',(req,res)=>{
 
 //新增餐廳頁面
 app.get('/restaurants/new', (req, res) => {
-  res.send('add restaurants new page')
+  return res.render('new')
 })
 
 //操作資料新增餐廳
 app.post('/restaurants', (req, res) => {
-  res.send('render restaurants')
+  const restaurantInput = req.body
+  return Restaurant.create({
+    name: restaurantInput.name, 
+    name_en: restaurantInput.name_en,
+    category: restaurantInput.category,
+    image: restaurantInput.image, 
+    location: restaurantInput.location, 
+    phone: restaurantInput.phone,
+    google_map: restaurantInput.google_map,
+    rating: restaurantInput.rating,
+    description: restaurantInput.description
+  })
+  .then(()=>res.redirect('/restaurants'))
+  .catch((err) => res.status(422).json(err))
 })
 
 //瀏覽特定餐廳
