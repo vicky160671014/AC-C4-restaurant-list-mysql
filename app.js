@@ -97,10 +97,13 @@ app.put('/restaurants/:id', (req, res) => {
 
 //刪除餐廳
 app.delete('/restaurants/:id', (req, res) => {
-  res.send(`delete restaurant: ${req.params.id}`)
+  const id = req.params.id
+  return Restaurant.destroy({where:{ id }})
+  .then(()=>res.redirect('/restaurants'))
+  .catch((err)=>res.status(422).json(err))
 })
 
 //listen
 app.listen(port,()=>{
-  console.log(`Express is running on http://localhost:${port}`)
+  console.log(`Express is running on http://localhost:${port}/restaurants`)
 })
