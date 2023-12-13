@@ -17,6 +17,17 @@
 <body>
 
   <header>
+    {{#if success_msg}}
+    <div class="alert alert-success" role="alert">
+      {{success_msg}}
+    </div>
+    {{/if}}
+
+    {{#if error_msg}}
+    <div class="alert alert-danger" role="alert">
+      {{error_msg}}
+    </div>
+    {{/if}}
     <!-- navigation -->
     <nav class="navbar navbar-light bg-light">
       <div class="container">
