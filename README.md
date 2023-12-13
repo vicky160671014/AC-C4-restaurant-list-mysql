@@ -19,19 +19,27 @@
 ```bash
 npm install
 ```
-4.安裝完畢後，繼續輸入:
+4.使用MySQL server，建立資料庫:
+``` bash
+CREATE DATABASE `restaurant`
+```
+5.於終端機透過sequelize-cli執行migration，建立資料表:
+```bash
+npx sequelize db:migrate
+```
+6.專案安裝完畢以及資料庫設置完成後，繼續輸入:
 ```bash
 npm run start
 ```
-5.若看見以下訊息，則代表順利執行，打開網頁瀏覽器進入到以下網址
+7.若看見以下訊息，則代表順利執行，打開網頁瀏覽器進入到以下網址
 ```bash
 Express is running on http://localhost:3000/restaurants
 ```
-6.若要暫停使用，則在終端機輸入:
+8.若要暫停使用，則在終端機輸入:
 ```bash
 ctrl + c
 ```
-7.載入種子資料，請輸入以下指令:
+9.若須載入種子資料，請輸入以下指令:
 ```bash
 npm run seed
 ```
