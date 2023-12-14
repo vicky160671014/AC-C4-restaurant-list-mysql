@@ -6,6 +6,8 @@ const Restaurant = db.Restaurant
 
 //瀏覽所有餐廳
 router.get('/',(req,res,next)=>{
+  const page = parseInt(req.query.page) || 1
+  const limit = 6
   const sortSelected = req.query.sort
   const sortOptions = {
     name_asc:[['name','ASC']],
@@ -15,6 +17,8 @@ router.get('/',(req,res,next)=>{
   }
   return Restaurant.findAll({
     attributes:['id','name','name_en','category','image','location','phone','google_map','rating','description'],
+    offset:(page-1)*limit,
+    limit,
     order:sortOptions[sortSelected],
     raw:true
   })
@@ -23,7 +27,13 @@ router.get('/',(req,res,next)=>{
       req.flash('error','目前無取得任何餐廳資料')
       return res.redirect('/restaurants')
     }
-    res.render('index',{ restaurants })
+    res.render('index',{ 
+      restaurants, 
+      prev: page>1 ? page-1: page,
+      next: page+1,
+      page,
+      sort: sortSelected
+     })
   })
   .catch((error) => {
     error.errorMessage = '資料取得失敗'

@@ -20,7 +20,7 @@
               </div>
             </form>
           </div>
-          
+          <!--Sort-->
           <div class="col-sm-1">
             <form action="/restaurants" method="get" id="sort">
               <div class="col-2">
@@ -35,7 +35,7 @@
               </div>
             </form>
           </div>
-          
+          <!--Sort-->
         </div>
       </div>
     </div>
@@ -78,6 +78,22 @@
       </div>
     </div>
   </div>
+
+  <!--Paginator-->
+  <div class="d-flex justify-content-center mb-3">
+    <form action="/restaurants" method="GET" style="display: inline;">
+      <input type="hidden" name="page" value="{{prev}}">
+      <input type="hidden" name="sort" value="{{sort}}">
+      <button type="submit" class="btn btn-primary me-3 py-0">prev</button>
+    </form>
+    <form action="/restaurants" method="GET" style="display: inline;">
+      <input type="hidden" name="page" value="{{next}}">
+      <input type="hidden" name="sort" value="{{sort}}"><!--同時回傳sort，避免分頁時沒按照sort分頁-->
+      <button type="submit" class="btn btn-primary me-3 py-0">next</button>
+    </form>
+    <span>目前第{{page}}頁</span>
+  </div>
+  <!--Paginator-->
 
 
 </div>
