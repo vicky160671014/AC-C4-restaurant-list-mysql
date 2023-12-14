@@ -33,11 +33,6 @@ app.use(router)
 
 app.use(errorHandler)
 
-//setting route
-app.get('/',(req,res)=>{
-  res.send('this will be restaurant list!')
-})
-
 //listen
 app.listen(port,()=>{
   console.log(`Express is running on http://localhost:${port}/restaurants`)

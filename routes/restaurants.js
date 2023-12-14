@@ -23,7 +23,7 @@ router.get('/',(req,res,next)=>{
       req.flash('error','目前無取得任何餐廳資料')
       return res.redirect('/restaurants')
     }
-    res.render('index',{ restaurants, sortSelected })
+    res.render('index',{ restaurants })
   })
   .catch((error) => {
     error.errorMessage = '資料取得失敗'
