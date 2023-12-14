@@ -2,50 +2,56 @@
   <div class="container m-2">
     <div class="input-group  d-flex m-3">
       <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">name</span>
-        <input type="text" class="form-control" placeholder="name" name="name" aria-describedby="basic-addon1" required>
+        <span class="input-group-text" id="basic-addon1">店名</span>
+        <input type="text" class="form-control" placeholder="雞湯大叔 餐廳" name="name" aria-describedby="basic-addon1" required>
       </div>
 
       <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">name_en</span>
-        <input type="text" class="form-control" placeholder="name_en" name="name_en" aria-describedby="basic-addon1">
+        <span class="input-group-text" id="basic-addon1">英文店名</span>
+        <input type="text" class="form-control" placeholder="Broth Master" name="name_en" aria-describedby="basic-addon1" required>
       </div>
 
       <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">category</span>
-        <input type="text" class="form-control" placeholder="category" name="category" aria-describedby="basic-addon1">
+        <span class="input-group-text" id="basic-addon1">分類</span>
+        <input type="text" class="form-control" placeholder="台式" name="category" list="categoryOptions" aria-describedby="basic-addon1" required>
+        <datalist id="categoryOptions">
+          <option>美式</option>
+          <option>咖啡</option>
+          <option>中東料理</option>
+          <option>日本料理</option>
+          <option>義式餐廳</option>
+        </datalist>
       </div>
 
       <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">image</span>
-        <input type="text" class="form-control" placeholder="image" name="image" aria-describedby="basic-addon1">
+        <span class="input-group-text" id="basic-addon1">圖片連結</span>
+        <input type="url" class="form-control" placeholder="image URL" name="image" aria-describedby="basic-addon1" required>
       </div>
 
       <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">location</span>
-        <input type="text" class="form-control" placeholder="location" name="location" aria-describedby="basic-addon1">
+        <span class="input-group-text" id="basic-addon1">地址</span>
+        <input type="text" class="form-control" placeholder="台北市中山區民生東路二段131號" name="location" aria-describedby="basic-addon1" required>
       </div>
 
       <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">phone</span>
-        <input type="text" class="form-control" placeholder="phone" name="phone" aria-describedby="basic-addon1">
+        <span class="input-group-text" id="basic-addon1">電話</span>
+        <input type="tel" class="form-control" placeholder="02-25373893" name="phone" aria-describedby="basic-addon1" required>
       </div>
 
       <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">google_map</span>
-        <input type="text" class="form-control" placeholder="google_map" name="google_map"
-          aria-describedby="basic-addon1">
+        <span class="input-group-text" id="basic-addon1">google地圖連結</span>
+        <input type="url" class="form-control" placeholder="google_map" name="google_map"
+          aria-describedby="basic-addon1" required>
       </div>
 
       <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">rating</span>
-        <input type="number" class="form-control" placeholder="rating" name="rating" aria-describedby="basic-addon1">
+        <span class="input-group-text" id="basic-addon1">評分</span>
+        <input type="number" class="form-control" placeholder="rating" name="rating" aria-describedby="basic-addon1" min="0" max="10" step="0.1" required>
       </div>
 
       <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">description</span>
-        <input type="text" class="form-control" placeholder="description" name="description"
-          aria-describedby="basic-addon1">
+        <span class="input-group-text" id="basic-addon1">敘述</span>
+        <textarea class="form-control" name="description" rows="3" placeholder="請輸入關於此餐廳的敘述" aria-describedby="basic-addon1" required></textarea>
       </div>
 
       <button type="submit" class="btn btn btn-success rounded">Create</button>
