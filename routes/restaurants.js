@@ -27,7 +27,7 @@ router.get('/',(req,res,next)=>{
   })
   .catch((error) => {
     error.errorMessage = '資料取得失敗'
-    next(error)
+    return next(error)
   })
 })
 
@@ -55,7 +55,7 @@ router.post('/', (req, res, next) => {
     return res.redirect('/restaurants')})
   .catch((error) => {
     error.errorMessage = '新增失敗'
-    next(error)
+    return next(error)
   })
 })
 
@@ -75,7 +75,7 @@ router.get('/:id', (req, res, next) => {
   })
     .catch((error) => {
       error.errorMessage = '資料取得失敗'
-      next(error)
+      return next(error)
   })
 })
 
@@ -95,7 +95,7 @@ router.get('/:id/edit',(req,res, next)=>{
 })
   .catch((error) => {
     error.errorMessage = '新增失敗'
-    next(error)
+    return next(error)
   })
 })
 
@@ -118,7 +118,7 @@ router.put('/:id', (req, res, next) => {
       return res.redirect(`/restaurants/${id}`)})
     .catch((error) => {
       error.errorMessage = '更新失敗'
-      next(error)
+      return next(error)
     })
 })
 
@@ -132,7 +132,7 @@ router.delete('/:id', (req, res, next) => {
 })
   .catch((error)=>{
     error.errorMessage='刪除失敗'
-    next(err)
+    return next(err)
   })
 })
 
