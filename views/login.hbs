@@ -1,0 +1,28 @@
+<div class="card text-center mx-auto my-5 w-50">
+  <div class="card-header">
+    <h2 class="text-center">Login</h2>
+  </div>
+
+  <div class="card-body">
+    <form action="/login" method="post">
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp"
+          placeholder="請輸入電子郵件" required>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="請輸入密碼" required>
+      </div>
+      <button type="submit" class="btn btn-dark m-2">登入</button>
+    </form>
+    <form action="/login/facebook" method="GET">
+      <button type="submit" class="btn btn-primary m-2">使用Facebook登入</button>
+    </form>
+  </div>
+  <div class="card-footer text-muted">
+    <span>尚未擁有帳戶?</span>
+    <a href="/register">註冊</a>
+  </div>
+</div>
+
