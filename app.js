@@ -3,6 +3,8 @@ const express = require('express')
 const flash = require('connect-flash')
 const session = require('express-session')
 const app = express()
+
+const passport = require('passport')
 const exphbs = require('express-handlebars')
 const methodOverride = require('method-override')
 
@@ -26,6 +28,8 @@ app.use(session({
 	saveUninitialized: false
 }))
 app.use(flash())
+
+app.use(passport.initialize())
 
 app.use(messageHandler)
 
