@@ -6,6 +6,7 @@ const Restaurant = db.Restaurant
 
 //瀏覽所有餐廳
 router.get('/',(req,res,next)=>{
+  console.log(req.user)
   const page = parseInt(req.query.page) || 1
   const limit = 6
   const sortSelected = req.query.sort
