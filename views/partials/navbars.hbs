@@ -1,5 +1,9 @@
-<div style="float: right">
-  <form action="/logout" method="POST">
-    <button class="btn btn-secondary" type="submit">Logout</button>
+<div class="user-dashboard">
+  {{#if user_name}}
+  <span style="color: #4592af;">使用者：{{user_name}}</span>
+  
+  <form action="/logout" method="post" class="ms-3" style="display: inline;">
+    <button type="submit" class="btn btn-secondary">登出</button>
   </form>
+  {{/if}}
 </div>

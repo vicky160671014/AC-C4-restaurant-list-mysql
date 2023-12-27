@@ -39,7 +39,7 @@ passport.serializeUser((user, done)=>{
 })
 
 passport.deserializeUser((user, done)=>{
-  done(null, { id: user.id })
+  done(null, { id: user.id, name: user.name })
 })
 
 
