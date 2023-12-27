@@ -11,8 +11,10 @@ router.get('/',(req,res)=>{
     return res.redirect('/restaurants')
   }//搜尋欄的空值的時候，重新導向跟目錄
   
+  const userId = req.user.id
   const keyword = req.query.keyword.trim().toLowerCase()
   const searchCondition = {
+    userId,
     [Op.or]: [
       { name: { [Op.like]: `%${keyword}%` } },
       { name_en: { [Op.like]: `%${keyword}%` }},
@@ -22,7 +24,7 @@ router.get('/',(req,res)=>{
   }
 
   return Restaurant.findAll({
-    attributes:['id','name','name_en','category','image','location','phone','google_map','rating','description'],
+    attributes:['id','name','name_en','category','image','location','phone','google_map','rating','description','userId'],
     where: searchCondition,
     raw:true
   })
