@@ -5,6 +5,11 @@ const session = require('express-session')
 const app = express()
 
 const passport = require('passport')
+
+if(process.env.NODE_ENV==='development'){
+  require('dotenv').config()
+}
+
 const exphbs = require('express-handlebars')
 const methodOverride = require('method-override')
 
@@ -23,7 +28,7 @@ app.use(express.urlencoded({ extended: true }))//設定可抓取req.body
 app.use(methodOverride('_method'))//設定路由複寫
 
 app.use(session({
-  secret: 'ThisIsSecret',
+  secret: process.env.SESSION_SECRET,
 	resave: false,
 	saveUninitialized: false
 }))
