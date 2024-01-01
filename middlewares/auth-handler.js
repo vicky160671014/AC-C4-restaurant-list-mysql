@@ -4,6 +4,6 @@ module.exports = (req, res, next)=>{
     return next()
   }
 
-  res.flash('error','尚未登入')
+  req.flash('error','尚未登入')
   return res.redirect('/login')
 }
